@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="אתר לרכישת שמלות ערב איכותיות במחירים סבירים">
+	<meta name="keywords" content="דרס ספוטר, רכישת שמלות ערב">
+	<meta name="author" content="Dress spotter">
+	<title>Dress Spotter</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" href="images/ic_launcher_round.png">
+
+<style>
+body {
+  font-family: arial;
+  margin: 0;
+}
+
+* {
+  box-sizing: content-box;
+}
+
+.Dressslides img {
+  vertical-align: center-right;
+  width:90%;
+  height:90%;
+  padding: 15px;
+  margin-top: 10px;
+  margin-left:5px;
+  margin-right:250px;
+}
+  .img1 {
+  width: 300px; 
+  height: 400px;
+  }
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Hide the images by default */
+.Dressslides {
+	width:400px;
+	height:400px;
+	padding:5px;
+	margin-bottom:15px;
+	display:inline-block;
+	max-width:66em;
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left:250px;
+  margin-right:250px;
+  color: blue;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgb(255, 212, 71);
+  transition: background-color 0.6s ease;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 2px;
+  margin-top:-10px;
+  background-color: #bbb;
+  border-radius: 45%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .5} 
+  to {opacity: 3}
+
+/* Add a transparency effect for thumnbail images */
+.img3 {
+  opacity: 0.6;
+}
+
+.active,
+.img3:hover {
+  opacity: 1;
+}
+</style>
+
+<script>
+function showSlides(J) {
+  var slides = document.getElementsByClassName("Dressslides");
+  var dots = document.getElementsByClassName("dot");
+  
+  //if J bigger then length so slideindex = 1
+  if (J > slides.length) {slideIndex = 1}    
+  if (J < 1) {slideIndex = slides.length}
+		  
+  //for display images in slide gallery
+  for (var i = 0; i < slides.length; i++) {
+		slides[i].style.display = "none";
+  }
+  //for moving dots per image
+  for (i = 0; i < dots.length; i++) {
+		dots[i].className = dots[i].className.replace("active", "");
+  }
+		  
+  //for the end of slides, do -1 for var of images
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+
+//for moving to the next slide we will put var J
+function plusSlides(J) {
+  showSlides(slideIndex += J);
+}
+
+//for current slide, we will call for the variable from html
+function currentSlide(J) {
+  showSlides(slideIndex = J);
+}
+	
+</script>
+</head>
+<body>	
+	<div id="Container">
+		<img src="images/ic_launcher_round.png" width="70" style="margin-right:15px;float:right">
+		<div id="Header">Dress Spotter<p style="color:blue;font-size:20px;">&nbsp;שירות לקוחות:
+		04-6754332</p></div>
+		<div id="Menu">
+		<ul style="width=100%">
+		<li><a href="home.html">דף הבית</a></li>
+		<li><a href="aboutus.html">אודותינו</a></li>
+		<li><a href="browse_dresses.html">רכישת שמלות ערב</a></li>
+		<li><a href="contactus.html">יצירת קשר</a></li>
+		<li></li>
+		</ul>
+		</div>
+		<div id="MainBody">	
+			<h1 style="text-align:center;font-size:35px;color:pink;">ברוכים הבאים לשמלות ערב</h1>
+			<h2 style="text-align:center;font-size:30px;color:pink;">כאן תוכלו למצוא את השמלה המושלמת שמתאימה לכם</h2>
+			<br>
+			
+			<div class="container" >
+				<div class="Dressslides fade">
+					<img  src="images/Camellia wide.jpg" class="img1">
+				</div>
+
+				<div class="Dressslides fade">
+					<img  src="images/SOFTWHITE_DBSTU_PROD1 wide.jpg"  class="img1">
+				</div>
+				<div class="Dressslides fade">
+					<img  src="images/short prom dresses wide.jpg" class="img1">
+				</div>
+				<div class="Dressslides fade">
+					<img  src="images/retro-princess-yellow-tulle-ball-gown-prom-dress-formal-with-sleeves.jpg" class="img1">
+				</div>
+				<div class="Dressslides fade">
+					<img  src="images/Navy Blue Elegant.jpeg" class="img1">
+				</div>
+				<div class="Dressslides fade">
+					<img  src="images/Long Gown wide.jpg" class="img1">
+				</div>
+				<div class="Dressslides fade">
+					<img  src="images/private party dress in sliver wide.jpg" class="img1">
+				</div>
+				<div class="Dressslides fade">
+					<img  src="images/Party_dress5 wide.jpg" class="img1">
+				</div>
+			</div>
+  
+			<!--we need the prev and next -->  
+			<div class="prev" onclick="plusSlides(-1)" style="font-size:30px;"><b>&lt;</b></div>
+			<div class="next" onclick="plusSlides(1)" style="font-size:30px;"><b>&gt;</b></div>
+
+			<div style="text-align:center">
+				<span class="dot" onclick="currentSlide(1)"></span> 
+				<span class="dot" onclick="currentSlide(2)"></span> 
+				<span class="dot" onclick="currentSlide(3)"></span> 
+				<span class="dot" onclick="currentSlide(4)"></span> 
+				<span class="dot" onclick="currentSlide(5)"></span>
+				<span class="dot" onclick="currentSlide(6)"></span>
+				<span class="dot" onclick="currentSlide(7)"></span>
+				<span class="dot" onclick="currentSlide(8)"></span>
+			</div>
+		</div>	
+		<div id="Footer">&copy;כל הזכויות השמורות לאתר Dress Spotter
+			<nav>
+				<a href="aboutus.html" style="color:white">אודותינו</a>  |
+				<a href="Purchase_regulations.html" style="color:white">תקנון הרכישה</a> |
+				<a href="contactus.html" style="color:white">צור קשר</a> 
+			</nav>
+		</div>
+	</div>
+	<script>
+	var slideIndex = 1;
+	showSlides(slideIndex);
+	</script>	
+</body>
+</html>

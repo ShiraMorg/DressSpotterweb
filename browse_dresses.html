@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="אתר לרכישת שמלות ערב איכותיות במחירים סבירים">
+	<meta name="keywords" content="דרס ספוטר, רכישת שמלות ערב">
+	<meta name="author" content="Dress spotter">
+	<title>שמלות ערב</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" href="images/ic_launcher_round.png">
+
+<script type="text/javascript">
+
+function buyDress(index) {
+	url = "./buy_dress.html?index=" + index;
+	window.location = url;
+}
+
+function initDressesOnLoad() {
+/*
+This function lists the available dresses here and saves the list in session storage.
+This is instead of using an SQL query to a database.
+*/
+let dresses = '{"dresses":[' +
+		'{"img":"images/Ball Gowns.jpg","makat":"100","price":"1000","descr":"Ball Gown"},' +
+		'{"img":"images/Camellia.jpg","makat":"200","price":"1111","descr":"Camellia"},' +
+		'{"img":"images/Crystal Beaded.jpg","makat":"300","price":"2222","descr":"Crystal Beaded"},' +
+		'{"img":"images/Prom Dress.jpg","makat":"400","price":"333","descr":"Prom Dress"},' +
+		'{"img":"images/retro-princess-yellow-tulle-ball-gown-prom-dress-formal-with-sleeves.jpg","makat":"500","price":"444","descr":"retro princess yellow tulle ball gown prom dress formal with sleeves"},' +
+		'{"img":"images/Morilee prom.jpg","makat":"600","price":"600","descr":"Morilee prom"},' +
+		'{"img":"images/Self-Belted-Balloon-Sleeve-Glitter-Dress.jpg","makat":"700","price":"2000","descr":"Self-Belted Balloon Sleeve Glitter Dress"},' +
+		'{"img":"images/tornai-3-4-sleeve-lace-and-satin-wedding-dress.jpg","makat":"800","price":"4000","descr":"tornai 3-4-sleeve lace and satin wedding dress"},' +
+		'{"img":"images/sequin-mini-dress.jpg","makat":"900","price":"777","descr":"sequin-mini-dress"},' +
+		'{"img":"images/private party dress in sliver.jpg","makat":"1000","price":"1050","descr":"private party dress in silver"},' +
+		'{"img":"images/Night Party Dress Green.jpg","makat":"1100","price":"575","descr":"Night Party Dress Green"},' +
+		'{"img":"images/midi dress.jpg","makat":"1200","price":"600","descr":"midi dress"},' +
+		'{"img":"images/Long Gown.jpg","makat":"1300","price":"1250","descr":"Long Gown"},' +
+		'{"img":"images/evening party maxi dress.jpg","makat":"1400","price":"1500","descr":"evening party maxi dress"},' +
+		'{"img":"images/Party dress1.jpg","makat":"1500","price":"800","descr":"Party dress"},' +
+		'{"img":"images/Ball Gown Prom.jpg","makat":"1600","price":"600","descr":"Prom Ball Gown"},' +
+		'{"img":"images/green-satin-cami-midi-dress.jpg","makat":"1700","price":"900","descr":"green satin cami midi dress"},' +
+		'{"img":"images/MCHAMPAGNE_MOB.jpg","makat":"1800","price":"3000","descr":"Wedding dress"}' +
+	']}';
+	sessionStorage.removeItem("dress");
+	sessionStorage.setItem("dress", dresses);
+	var dress_arr = JSON.parse(dresses);
+	var len = Object.keys(dress_arr.dresses).length;
+	dress_container = document.getElementById('dress_gallery');
+	for (i = 0; i < len; i++) {
+		dress_container.innerHTML += '<div class="class1"><a target="_self" href="#"><img src="' + dress_arr.dresses[i].img + '" class="img1" onClick="buyDress(' + i + ')"/></a></div>'; 
+	}
+}
+</script>
+<style>
+	.class1 {
+		width:200px;
+		height:200px;
+		padding:5px;
+		margin-bottom:15px;
+		display:inline-block;
+		max-width:66em;
+		float:left;
+	}
+	.img1 {
+		width: 150px; 
+		height: 200px;
+	}	
+
+	img.img1:hover {
+		transform: scale(1.5); 
+	}
+</style>
+</head>
+<body onload="initDressesOnLoad()">	
+	<div id="Container">
+		<img src="images/ic_launcher_round.png" width="70" style="margin-right:15px;float:right">
+		<div id="Header">Dress Spotter<p style="color:blue;font-size:20px;">&nbsp;שירות לקוחות:
+		04-6754332</p></div>
+		<div id="Menu">
+		<ul style="width=100%">
+		<li><a href="home.html">דף הבית</a></li>
+		<li><a href="aboutus.html">אודותינו</a></li>
+		<li><a href="#">רכישת שמלות ערב</a></li>
+		<li><a href="contactus.html">יצירת קשר</a></li>
+		<li></li>
+		</ul>
+		</div>
+		<div id="MainBody">
+	
+			<h3 style="text-align:center;font-size:35px;color:pink;">שמלות ערב</h3>
+			<h2 style="text-align:center;font-size:25px;color:pink;">לבחירתכן, מגוון רחב של שמלות ערב שתוכלו לחלום עליו</h2>
+			<div id="channel-single" class="channel" dir="rtl">
+				<br> <br>
+				<div id="dress_gallery" >
+<!--				filled in by javascript onload function above --> 
+				</div>
+					
+			</div>
+		</div>
+		<br> <br>
+	</div>	
+	<br>
+	<div id="Footer">&copy;כל הזכויות השמורות לאתר Dress Spotter
+		<nav>
+			<a href="aboutus.html" style="color:white">אודותינו</a>  |
+			<a href="Purchase_regulations.html" style="color:white">תקנון הרכישה</a> 
+		</nav>
+	</div>
+</body>
+</html>

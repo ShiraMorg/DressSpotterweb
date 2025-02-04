@@ -1,0 +1,112 @@
+*{margin: 0; padding: 0;}
+body{
+	background-color:#FFF;
+	font-family:calibri, Tahoma, Genva, sans-serif;
+	font-size:17px;
+	background-image:url('../images/beach.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size:cover;
+}	
+
+.about {
+	text-align:right;
+	margin-right:400px;
+	font-size:25px;
+	font-family:arial;
+}
+.about1 {
+	text-align:right;
+	margin-right:425px;
+	font-size:25px;
+	font-family:arial;
+}
+.contact{
+	margin-right:725px; 
+	margin-left:750px;
+	padding-bottom:10px;
+	font-size:40px; 
+	font-family:arial; 
+}	
+.contactmessage{
+	height:80px; 
+	width:400px;
+	margin-top:10px;
+	font-family:arial;
+	text-align:right;
+}
+
+#Container{
+	width:100%;
+	min-width:1350px;
+	height: auto;
+}
+#Header{
+	width:100%;
+	height:50px;
+	background-color:Aqua;
+	color:blue;
+	text-align:left;
+	font-size:26px;
+	padding:10px;
+	padding-right: 15px;
+	border-style: solid;
+	border-width: 0px 0px 15px 0px;
+	border-color: transparent Aqua #FC0 transparent;
+	
+	background-image:url("../images/ic_launcher_round.png");
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 5em;
+}
+#Menu{
+	width:100%;
+	padding-right: 25px;
+	height:60px;
+	background-color:DarkOrange;
+}	
+#Menu li{
+	float:left;
+	display:block;
+	width:200px;
+	height:60px;
+	text-align:center;
+	line-height:55px;
+	font-size:20px;
+}
+#Menu li a {
+	text-decoration:none;
+	display:block;
+	width:200px;
+	height:60px;
+	color:blue;
+}
+#Menu li:Hover{
+	background-color:#FC0;
+}
+#Menu ul li ul{
+	display:none;
+}
+
+#Menu ul li:Hover> ul{
+	display:block;
+	position:relative;
+	z-index:999;
+}
+
+#MainBody .channel {
+	height:100%; float:left;
+	overflow:auto;
+}
+
+#MainBody #channel-single{background:transparent; width:100%; overlay:auto}
+
+#Footer{
+	float: left;
+	height:50px;
+	width:100%;
+	background-color:blue;
+	color:white;
+	direction:ltr;
+	padding:15px;
+}	

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="אתר לרכישת שמלות ערב איכותיות במחירים סבירים">
+	<meta name="keywords" content="דרס ספוטר, רכישת שמלות ערב">
+	<meta name="author" content="Dress spotter">
+	<title>Dress Spotter</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" href="images/ic_launcher_round.png">
+	
+	<script type="text/javascript">
+	function getDressOnLoad() {
+		// get array index of the selected dress
+		var myUrl = new URL(window.location.href);
+		var dress_index = myUrl.searchParams.get('index');
+		
+		// get the locally stored dresses array
+		var my_dresses = sessionStorage.getItem("dress");
+		var dress_arr = JSON.parse(my_dresses);
+		
+		// get the data for the selected dress
+		let img = dress_arr.dresses[dress_index].img;
+		let price = dress_arr.dresses[dress_index].price;
+		let descr = dress_arr.dresses[dress_index].descr;
+		let makat = dress_arr.dresses[dress_index].makat;
+		descr = "<b>תאור</b>: " + descr;
+		price = "<b>מחיר</b>: " + price + ' ש"ח';
+		makat = "<b>מקט</b>: " + makat;
+		
+		// Put the dress data and image into the page
+		document.getElementById("descr").innerHTML = descr;
+		document.getElementById("price").innerHTML = price;
+		document.getElementById("makat").innerHTML = makat;
+		dress_image= document.getElementById('dress_img');
+		dress_image.innerHTML += '<img src="' + img + '" style="width:400px;height:500px;"/>' ;
+	}
+	
+	function Sendcontact(){
+		// get array index of the selected dress
+		var myUrl = new URL(window.location.href);
+		var dress_index = myUrl.searchParams.get('index');
+
+		var Size = document.getElementsByName("size");
+		var msg = "";
+		var Color = document.getElementsByName("color");
+		var msg1= "";
+
+			for (var i = 0; i < Size.length; i++) {
+				if (Size[i].checked) {
+					msg += Size[i].value + ",";
+				}
+			}
+			for (var j = 0; j < Color.length; j++) {
+				if(Color[j].checked) {
+					msg1 += Color[j].value + ",";
+				}
+			}
+				
+			if (msg !== "" && msg1 !== "") {
+				// delete trailing comma
+				msg = msg.slice(0,-1);
+				msg1 = msg1.slice(0,-1);
+					
+//				alert("Your sizes are: " + msg +"; your color is: "+ msg1);
+				url = './creditcard.html?index=' + dress_index + '&sizes=' + msg + '&colors=' + msg1 ;
+				window.location = url;
+				return true;
+			} else {
+				alert("no size selected or color selected ");
+				return false;
+			}
+			
+	}
+	</script>
+	
+	<style>
+* {
+  box-sizing: content-box;
+}
+
+/* Create three equal columns that float next to each other */
+.column {
+  float: left;
+  width: 31%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.class1 {
+	width:500px;
+	height:600px;
+	margin:50px;
+	display:inline-block;
+	float:left;
+}
+
+#fourth{
+	width: 550px;
+	height: 260px;
+	margin:30px;
+	display:inline-block;
+	float: center;
+}
+
+.submit_button {
+    font-size: 25px; 
+    font-family: arial;
+	background-color: #F9966B;
+	color: blue;
+}
+
+	</style>
+</head>
+<body onload="getDressOnLoad()">	
+	<div id="Container">
+		<img src="images/ic_launcher_round.png" width="70" style="margin-right:15px;float:right">
+		<div id="Header">Dress Spotter<p style="color:blue;font-size:20px;">&nbsp;שירות לקוחות:
+		04-6754332</p></div>
+		<div id="Menu">
+		<ul style="width=100%">
+		<li><a href="home.html">דף הבית</a></li>
+		<li><a href="aboutus.html">אודותינו</a></li>
+		<li><a href="#">רכישת שמלות ערב</a></li>
+		<li><a href="contactus.html">יצירת קשר</a></li>
+		<li></li>
+		</ul>
+		</div>
+		<div id="MainBody">
+	
+			<h1 style="text-align:center;font-size:35px;color:orange;">שמלה להזמנה</h1>
+			<div class="row">
+
+			<div class="column">
+			<p id="descr" dir="rtl" style="margin-right:100px;"></p>
+			<p id="price" dir="rtl" style="margin-right:100px;"></p>
+			<p id="makat" dir="rtl" style="margin-right:100px;"></p>
+			</div>
+
+			<div class="column">
+			<div id="dress_img" class="fourth">
+			<!-- filled in by getDressOnLoad() -->
+			</div>
+			</div>
+
+			<div class="column">
+			<div id="channel-single" class="channel" dir="rtl">
+			<form action="#" method="GET" style="border-collapse:collapse; background-color:gold; font-size:20px; font-family:arial;text-align:center">
+			<fieldset style="margin-left:10px; margin-right:10px; padding-bottom:5px; margin-bottom:5px; ">
+			<legend style="font-size:30px; font-family:segoe UI;text-align:center">בחירת צבע ומידה עבור השמלה</legend>
+			<fieldset style="margin-left:10px; margin-right:10px;margin-top:5px;margin-bottom:5px;">
+			<legend>בחרי מידה</legend>
+			<input type="checkbox" name="size" value="S"/>S
+			<br>
+			<input type="checkbox"  name="size" value="M"/>M
+			<br>
+			<input type="checkbox" name="size" value="L"/>L
+			<br>
+			<input type="checkbox" name="size"  value="XL"/>XL
+			<br>
+			</fieldset>
+			<fieldset style="margin-left:10px; margin-right:10px;margin-top:5px;margin-bottom:5px;">
+			<legend>בחרי צבע</legend>
+			<input type="radio" name="color" value="Blue"/>כחול
+			<br>
+			<input type="radio"  name="color" value="Yellow"/>צהוב
+			<br>
+			<input type="radio" name="color" value="Orange"/>כתום
+			<br>
+			<input type="radio" name="color" value="Green"/>ירוק
+			<br>
+			<input type="radio" name="color" value="Pink"/>ורוד
+			<br>
+			<input type="radio" name="color" value="Silver"/>כסף
+			<br>
+			</fieldset>
+			<input type="button" class="submit_button" onClick="Sendcontact()" value=" ביצוע הזמנה "/>
+			</form>
+			</div>
+		</div>
+
+		</div>
+
+		</div>
+	</div>
+	<br>
+	<br>
+	<div id="Footer">&copy;כל הזכויות השמורות לאתר Dress Spotter
+			<nav>
+				<a href="aboutus.html" style="color:white">אודותינו</a>  |
+				<a href="Purchase_regulations.html" style="color:white">תקנון הרכישה</a>
+			</nav>
+	</div>
+</body>
+</html>
